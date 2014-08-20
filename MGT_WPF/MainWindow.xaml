@@ -1,0 +1,47 @@
+﻿<Window x:Class="MGT_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MGT" MaxWidth="400" MaxHeight="500" MinWidth="300" SizeToContent="WidthAndHeight" Background="#FFE3F6FF" Icon="globe_vista.ico">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="stackPanel_fieldsLabels">
+                    <Label Name="label_IP_Header" HorizontalAlignment="Left" Padding="1">IP:</Label>
+                    <Label Name="label_Geo_Geo" HorizontalAlignment="Left" Padding="1">Geo:</Label>
+                    <Label Name="label_Carrier_Header" HorizontalAlignment="Left" Padding="1">Carrier:</Label>
+                    <Label Name="label_Org_Header" HorizontalAlignment="Left" Padding="1">Org:</Label>
+                    <Label Name="label_State_Header" HorizontalAlignment="Left" Padding="1">State:</Label>
+                    <Label Name="label_Sld_Header" HorizontalAlignment="Left" Padding="1">Sld:</Label>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <Label x:Name="label_IP" HorizontalAlignment="Left" Padding="1">IP</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Name="image_CountryFlag" ></Image>
+                        <Label Name="label_Geo" HorizontalAlignment="Left" Padding="1">Geo</Label>
+                    </StackPanel>
+
+                    <Label Name="label_Carrier" HorizontalAlignment="Left" Padding="1">Carrier</Label>
+                    <Label Name="label_Org" HorizontalAlignment="Left" Padding="1">Org</Label>
+                    <Label Name="label_State" HorizontalAlignment="Left" Padding="1">State</Label>
+                    <Label Name="label_Sld" HorizontalAlignment="Left" Padding="1">Sld</Label>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <WrapPanel Name="wrappanel_BatchWrapPanel" Grid.Row="2" Grid.ColumnSpan="2">
+            <TextBlock>batch</TextBlock>
+        </WrapPanel>
+        <TextBox Name="textBox_DebugLog" Grid.Row="3" TextWrapping="Wrap" Grid.ColumnSpan="2" MaxLines="10" VerticalScrollBarVisibility="Auto" Margin="3"/>
+        <RichTextBox Name="RichTextBox_History" Grid.Row="4" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto" Margin="3"></RichTextBox>
+    </Grid>
+</Window>
