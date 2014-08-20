@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGT_WPF", "MGT_WPF\MGT_WPF.csproj", "{9CFE153E-D65F-430F-BF92-5F48889598CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoIP", "..\..\!libs\GeoIP\GeoIP\GeoIP.csproj", "{78B43EDC-2D2A-4A4F-BAB0-286E91A626EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{9CFE153E-D65F-430F-BF92-5F48889598CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CFE153E-D65F-430F-BF92-5F48889598CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CFE153E-D65F-430F-BF92-5F48889598CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78B43EDC-2D2A-4A4F-BAB0-286E91A626EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B43EDC-2D2A-4A4F-BAB0-286E91A626EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B43EDC-2D2A-4A4F-BAB0-286E91A626EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B43EDC-2D2A-4A4F-BAB0-286E91A626EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

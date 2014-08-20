@@ -34,11 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>globe_vista.ico</ApplicationIcon>
+    <ApplicationIcon>app_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +65,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FolderPaths.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,7 +99,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="globe_vista.ico" />
+    <None Include="Resources\app_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\app_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="app_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\!libs\GeoIP\GeoIP\GeoIP.csproj">
+      <Project>{78b43edc-2d2a-4a4f-bab0-286e91a626ea}</Project>
+      <Name>GeoIP</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
