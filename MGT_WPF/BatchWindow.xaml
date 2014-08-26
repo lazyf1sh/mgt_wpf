@@ -1,0 +1,31 @@
+﻿<Window x:Class="MGT_WPF.BatchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BatchWindow" Height="300" MaxHeight="900" Width="300" SizeToContent="WidthAndHeight" Background="#FFE3F6FF" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ProgressBar Name="prgrssbr" Foreground="Blue" Height="17" Margin="10"></ProgressBar>
+        <ListView  Name="lstw" Margin="10" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            <ListView.View>
+                <GridView> 
+                    <GridView.Columns>
+                        <GridViewColumn Header="Clipdata" DisplayMemberBinding="{Binding Clipdata}"></GridViewColumn>
+                        <GridViewColumn Header="IP" DisplayMemberBinding="{Binding IPAddress}"></GridViewColumn>
+                        <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Country}"></GridViewColumn>
+                        <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}"></GridViewColumn>
+                        <GridViewColumn Header="Carrier" DisplayMemberBinding="{Binding Carrier}"></GridViewColumn>
+                        <GridViewColumn Header="Organisation" DisplayMemberBinding="{Binding Organisation}"></GridViewColumn>
+                        <GridViewColumn Header="CountryCode" DisplayMemberBinding="{Binding CountryCode}"></GridViewColumn>
+                        <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"></GridViewColumn>
+                        <GridViewColumn Header="Sld" DisplayMemberBinding="{Binding Sld}"></GridViewColumn>
+                        <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"></GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>
