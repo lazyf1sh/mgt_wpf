@@ -107,10 +107,13 @@ namespace MGT_WPF
             }
         }
 
+
+
         public MainWindow()
         {
             InitializeComponent();
             initApp();
+
         }
 
         #region interface
@@ -119,8 +122,8 @@ namespace MGT_WPF
         {
             Properties.Settings.Default.MainWindowLeft = this.Left;
             Properties.Settings.Default.MainWindowTop = this.Top;
-            Properties.Settings.Default.MainWindowWidth = this.ActualWidth;
-            Properties.Settings.Default.MainWindowHeight = this.ActualHeight;
+            Properties.Settings.Default.MainWindowActualWidth = this.ActualWidth;
+            Properties.Settings.Default.MainWindowActualHeight = this.ActualHeight;
             Properties.Settings.Default.Save();
         }
 
@@ -128,8 +131,8 @@ namespace MGT_WPF
         {
             this.Left = Properties.Settings.Default.MainWindowLeft;
             this.Top = Properties.Settings.Default.MainWindowTop;
-            this.Width = Properties.Settings.Default.MainWindowWidth;
-            this.Height = Properties.Settings.Default.MainWindowHeight;
+            this.Width = Properties.Settings.Default.MainWindowActualWidth;
+            this.Height = Properties.Settings.Default.MainWindowActualHeight;
         }
 
         private void setFlagToForm(string ccode)
@@ -255,11 +258,29 @@ namespace MGT_WPF
 
             writeToLog(String.Format("Line to go: {0}", clipboardLines[0]));
 
-            IPData ipdata = await getIpData(clipboardLines[0]);
-            if (null != ipdata)
+            IPInfo ipinfo = await getIpData(clipboardLines[0]);
+            if (null != ipinfo.Data)
             {
-                fillForm(ipdata);
-
+                writeToLog(ipinfo.Data.Carrier);
+                fillForm(ipinfo.Data);
+                switch (ipinfo.Source)
+                {
+                    case GeoInfoSource.Ram:
+                        this.Title = string.Format("MGT [{0}]", ipinfo.Source.ToString());
+                        break;
+                    case GeoInfoSource.SQLite:
+                        this.Title = string.Format("MGT [{0}]", ipinfo.Source.ToString());
+                        break;
+                    case GeoInfoSource.Api:
+                        this.Title = string.Format("MGT [{0}]", ipinfo.Source.ToString());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                writeToLog("ipdata is null");
             }
         }
 
@@ -272,9 +293,9 @@ namespace MGT_WPF
         }
 
         string previousIp = null;
-        private async Task<IPData> getIpData(string clipboard)
+        private async Task<IPInfo> getIpData(string clipboard)
         {
-            return await Task<IPData>.Factory.StartNew(() =>
+            return await Task<IPInfo>.Factory.StartNew(() =>
             {
                 IPInfo ipinfo = new IPInfo(clipboard);
                 if (null == ipinfo.Data)
@@ -283,8 +304,9 @@ namespace MGT_WPF
                 }
                 else
                 {
+
                     previousIp = ipinfo.Data.IPAddress;
-                    return ipinfo.Data;
+                    return ipinfo;
                 }
             });
         }
@@ -292,6 +314,12 @@ namespace MGT_WPF
         string previousClipBoardContent = null;
 
         #endregion
+
+        private void btnBatch_Click(object sender, RoutedEventArgs e)
+        {
+            BatchWindow batchWindow = new BatchWindow();
+            batchWindow.Show();
+        }
 
 
 
