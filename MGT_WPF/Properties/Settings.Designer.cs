@@ -50,24 +50,72 @@ namespace MGT_WPF.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double MainWindowWidth {
+        public double MainWindowActualWidth {
             get {
-                return ((double)(this["MainWindowWidth"]));
+                return ((double)(this["MainWindowActualWidth"]));
             }
             set {
-                this["MainWindowWidth"] = value;
+                this["MainWindowActualWidth"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double MainWindowHeight {
+        public double MainWindowActualHeight {
             get {
-                return ((double)(this["MainWindowHeight"]));
+                return ((double)(this["MainWindowActualHeight"]));
             }
             set {
-                this["MainWindowHeight"] = value;
+                this["MainWindowActualHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BatchWindowLeft {
+            get {
+                return ((double)(this["BatchWindowLeft"]));
+            }
+            set {
+                this["BatchWindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BatchWindowTop {
+            get {
+                return ((double)(this["BatchWindowTop"]));
+            }
+            set {
+                this["BatchWindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BatchWindowWidth {
+            get {
+                return ((double)(this["BatchWindowWidth"]));
+            }
+            set {
+                this["BatchWindowWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double BatchWindowHeight {
+            get {
+                return ((double)(this["BatchWindowHeight"]));
+            }
+            set {
+                this["BatchWindowHeight"] = value;
             }
         }
     }
