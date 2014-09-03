@@ -118,5 +118,29 @@ namespace MGT_WPF.Properties {
                 this["BatchWindowHeight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BatchWindowTopMost {
+            get {
+                return ((bool)(this["BatchWindowTopMost"]));
+            }
+            set {
+                this["BatchWindowTopMost"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MainWindowTopMost {
+            get {
+                return ((bool)(this["MainWindowTopMost"]));
+            }
+            set {
+                this["MainWindowTopMost"] = value;
+            }
+        }
     }
 }

@@ -101,6 +101,10 @@ namespace MGT_WPF
 
         private void initApp()
         {
+            Checks.checkPcName();
+            Checks.checkLicence();
+            Checks.checkLocation();
+            
             if (!Directory.Exists(Paths.MgtAppdataFolder))
             {
                 Directory.CreateDirectory(Paths.MgtAppdataFolder);
@@ -127,12 +131,34 @@ namespace MGT_WPF
             Properties.Settings.Default.Save();
         }
 
+
+        private HotKey _hotkey;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+            try
+            {
+                _hotkey = new HotKey(ModifierKeys.Control | ModifierKeys.Alt, Keys.C, this);
+                _hotkey.HotKeyPressed += (k) => startBatchWindows();
+            }
+            catch (Exception ex)
+            {
+                textBox_DebugLog.Text = ex.Message + Environment.NewLine + textBox_DebugLog.Text;
+                textBox_DebugLog.Text = "Комбинация горячих клавиш занята" + Environment.NewLine + textBox_DebugLog.Text;
+            }
+            
+            
+            
+
             this.Left = Properties.Settings.Default.MainWindowLeft;
             this.Top = Properties.Settings.Default.MainWindowTop;
             this.Width = Properties.Settings.Default.MainWindowActualWidth;
             this.Height = Properties.Settings.Default.MainWindowActualHeight;
+
+            chckbxTopMost.IsChecked = Properties.Settings.Default.MainWindowTopMost;
+
+            
         }
 
         private void setFlagToForm(string ccode)
@@ -259,7 +285,7 @@ namespace MGT_WPF
             writeToLog(String.Format("Line to go: {0}", clipboardLines[0]));
 
             IPInfo ipinfo = await getIpData(clipboardLines[0]);
-            if (null != ipinfo.Data)
+            if (null != ipinfo && null != ipinfo.Data)
             {
                 writeToLog(ipinfo.Data.Carrier);
                 fillForm(ipinfo.Data);
@@ -315,10 +341,33 @@ namespace MGT_WPF
 
         #endregion
 
-        private void btnBatch_Click(object sender, RoutedEventArgs e)
+        private void startBatchWindows()
         {
             BatchWindow batchWindow = new BatchWindow();
             batchWindow.Show();
+        }
+
+        private void btnBatch_Click(object sender, RoutedEventArgs e)
+        {
+            startBatchWindows();
+        }
+
+        private void chckbxTopMost_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Topmost)
+            {
+                ((CheckBox)sender).IsChecked = false;
+                this.Topmost = false;
+                Properties.Settings.Default.MainWindowTopMost = false;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                ((CheckBox)sender).IsChecked = true;
+                this.Topmost = true;
+                Properties.Settings.Default.MainWindowTopMost = true;
+                Properties.Settings.Default.Save();
+            }
         }
 
 

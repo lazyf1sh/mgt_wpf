@@ -72,6 +72,8 @@
     <Compile Include="BatchWindow.xaml.cs">
       <DependentUpon>BatchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Checks.cs" />
+    <Compile Include="HotKey.cs" />
     <Compile Include="Paths.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

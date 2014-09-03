@@ -1,31 +1,75 @@
 ﻿<Window x:Class="MGT_WPF.BatchWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="BatchWindow" Height="300" MaxHeight="900" Width="300" SizeToContent="WidthAndHeight" Background="#FFE3F6FF" Closing="Window_Closing" Loaded="Window_Loaded">
+        xmlns:p="clr-namespace:MGT_WPF.Properties"
+        Title="Geo Information [batch]" MaxHeight="900" SizeToContent="WidthAndHeight" Background="#FFE3F6FF" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ProgressBar Name="prgrssbr" Foreground="Blue" Height="17" Margin="10"></ProgressBar>
-        <ListView  Name="lstw" Margin="10" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ProgressBar Name="prgrssbr" Grid.ColumnSpan="2" Foreground="Blue" Height="17" MinWidth="200" Margin="10, 10, 10, 5"></ProgressBar>
+        <ListView SelectionMode="Extended"  Name="lstw" Margin="10, 5, 5, 5" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="{Binding BackgroundColor}"/>
+                    <Setter Property="BorderBrush" Value="{Binding BackgroundColor}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
-                <GridView> 
+                <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Clipdata" DisplayMemberBinding="{Binding Clipdata}"></GridViewColumn>
+                        <GridViewColumn Header="Clipdata" DisplayMemberBinding="{Binding Clipdata}" Width="75" />
                         <GridViewColumn Header="IP" DisplayMemberBinding="{Binding IPAddress}"></GridViewColumn>
-                        <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Country}"></GridViewColumn>
+                        <GridViewColumn Header="Country">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding FlagPath}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" MaxHeight="17" MaxWidth="17"></Image>
+                                    <TextBlock Text="{Binding Country}" Margin="4, 0, 0, 0"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                         <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}"></GridViewColumn>
                         <GridViewColumn Header="Carrier" DisplayMemberBinding="{Binding Carrier}"></GridViewColumn>
                         <GridViewColumn Header="Organisation" DisplayMemberBinding="{Binding Organisation}"></GridViewColumn>
-                        <GridViewColumn Header="CountryCode" DisplayMemberBinding="{Binding CountryCode}"></GridViewColumn>
-                        <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"></GridViewColumn>
+
                         <GridViewColumn Header="Sld" DisplayMemberBinding="{Binding Sld}"></GridViewColumn>
                         <GridViewColumn Header="State" DisplayMemberBinding="{Binding State}"></GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <StackPanel Grid.Row="1" Grid.Column="2" Margin="2.5">
+            <CheckBox x:Name="chckbxTopMost" Margin="5" Click="chckbxTopMost_Click" HorizontalAlignment="Center">always on top</CheckBox>
+            <ListView  Name="lstwPercents" Margin="2.5" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="{Binding BackgroundColor}"/>
+                    <Setter Property="BorderBrush" Value="{Binding BackgroundColor}"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="%" DisplayMemberBinding="{Binding Percent}"></GridViewColumn>
+                        <GridViewColumn Header="Org">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding Field}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        </StackPanel>
     </Grid>
 </Window>
